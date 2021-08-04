@@ -1,14 +1,14 @@
 import { Money, AssetPair, OrderPrice } from '@waves/data-entities';
 import { BigNumber } from '@waves/bignumber';
-import { libs } from '@waves/waves-transactions';
+import { libs } from '@decentralchain/waves-transactions';
 import { VALIDATORS } from './fieldValidator';
 
-export const WAVES_ID = 'WAVES';
+export const DCC_ID = 'DCC';
 const { stringToBytes, base58Encode } = libs.crypto;
 
 
 //@ts-ignore
-const normalizeAssetId = id => id === WAVES_ID ? '' : id;
+const normalizeAssetId = id => id === DCC_ID ? '' : id;
 
 interface ICall { function: string, args?: Array<any> }
 
@@ -96,7 +96,7 @@ export module prepare {
             return idToNode(money.asset.id);
         }
         
-        export function timestamp(time: string|number|Date) {
+        export function timestamp(time: string|number|Date): string|number|Date {
             if (!(+time) && typeof time === 'string') {
                 return Date.parse(time);
             }
@@ -252,6 +252,6 @@ export module prepare {
     }
     
     export function idToNode(id: string): string {
-        return id === WAVES_ID ? '' : id;
+        return id === DCC_ID ? '' : id;
     }
 }

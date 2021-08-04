@@ -1,6 +1,6 @@
 import { IAdapterSignMethods } from './interfaces';
-import { libs, protoPerialize } from '@waves/waves-transactions';
-import * as wavesTransactions from '@waves/waves-transactions';
+import { libs, protoPerialize } from '@decentralchain/waves-transactions';
+import * as wavesTransactions from '@decentralchain/waves-transactions';
 import { toNode as mlToNode } from '@waves/money-like-to-node';
 import { prepare } from './prepare';
 import processors = prepare.processors;
@@ -56,7 +56,7 @@ export enum SIGN_TYPE {
     CREATE_ORDER = 1002,
     CANCEL_ORDER = 1003,
     COINOMAT_CONFIRMATION = 1004,
-    WAVES_CONFIRMATION = 1005,
+    DCC_CONFIRMATION = 1005,
     ISSUE = 3,
     TRANSFER = 4,
     REISSUE = 5,
@@ -125,7 +125,7 @@ export const SIGN_TYPES: Record<SIGN_TYPE, ITypesMap> = {
         },
         adapter: 'signRequest'
     },
-    [SIGN_TYPE.WAVES_CONFIRMATION]: {
+    [SIGN_TYPE.DCC_CONFIRMATION]: {
         getBytes: {
             1: (txData) => {
                 const { timestamp, publicKey } = txData;
